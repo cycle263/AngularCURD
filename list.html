@@ -1,0 +1,26 @@
+<div>
+    <input style="float: right;margin: 12px;" type="text" ng-model="search" class="search-query" placeholder="Search"/>
+    <i style="position: relative;left: 610px;top:17px;cursor: pointer;" class="icon-search"></i>
+</div><br>
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th><a href="" ng-click="fieldName = 'num'; reverse=!reverse">Num</a></th>
+            <th><a href="" ng-click="fieldName = 'name'; reverse=!reverse">Project</a></th>
+            <th>Description</th>
+            <th>Site</th>
+            <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
+            <th><i class="icon-remove-sign"></i></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="project in pros | filter:search | orderBy:fieldName:reverse">
+            <td>{{project.num}}</td>
+            <td><a href="{{project.site}}" target="_blank">{{project.name}}</a></td>
+            <td>{{project.description}}</td>
+            <td>{{project.site}}</td>
+            <td><a href="#/edit/{{project.num}}"><i class="icon-edit"></i></a></td>
+            <td ng-click="delConfirm();"><a href="#/delete/{{project.num}}"><i class="icon-remove"></i></a></td>
+        </tr>
+    </tbody>
+</table>
